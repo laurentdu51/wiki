@@ -41,9 +41,9 @@ def wiki_index(request, cat):
 		page.wiki_search = Wiki_search_Form()
 	if cat == "index":
 		if w_search != None:
-			wiki_art = Wiki.objects.filter( w_publier = True ).filter(q).order_by( '-w_publdate' )[:5]
+			wiki_art = Wiki.objects.filter( w_publier = True ).filter(q).order_by( '-w_publdate' )
 		else :
-			wiki_art = Wiki.objects.filter( w_publier = True ).order_by( '-w_publdate' )[:5]
+			wiki_art = Wiki.objects.filter( w_publier = True ).order_by( '-w_publdate' )
 		page.wiki_cat = Cat_Wiki.objects.all()[:15]
 
 	elif cat == "all":

@@ -14,9 +14,11 @@ class Wiki_Admin(ImportExportModelAdmin):
 	form = Wiki_Admin_Form
 	list_display = ('w_titre', 'w_description', 'w_publier','w_publdate','w_reading')
 	list_filter = ('w_publier','w_cat','w_publdate')
+	exclude = ('w_publier','w_reading',)
 	filter_horizontal = ('w_cat',)
 	actions = [bt_w_publier, bt_w_not_publier]
 	search_fields = ['w_titre','w_contenu']
+
 admin.site.register(Wiki, Wiki_Admin)
 
 class Cat_Wiki_Admin(admin.ModelAdmin):
