@@ -57,7 +57,7 @@ def wiki_index(request, cat):
 		page.wiki_cat = Cat_Wiki.objects.filter( cw_titre_slgify = cat )[:15]
 		page.retour = "wiki_index"
 
-	paginator = Paginator(wiki_art, 15)
+	paginator = Paginator(wiki_art, 100)
 	page.number = request.GET.get('page')
 
 	page.wiki_art = paginator.get_page(page.number)
