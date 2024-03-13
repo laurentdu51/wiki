@@ -13,3 +13,5 @@ migrations/__pycache__/0004_auto_20240123_1644.cpython-312.pyc
 migrations/__pycache__/0005_auto_20240123_1658.cpython-312.pyc
 migrations/__pycache__/0006_auto_20240124_0910.cpython-312.pyc
 migrations/__pycache__/0007_remove_wiki_w_data.cpython-312.pyc
+migrations/__pycache__/0005_alter_wiki_w_publdate.cpython-312.pyc
+migrations/__pycache__/0006_auto_20240313_1057.cpython-312.pyc

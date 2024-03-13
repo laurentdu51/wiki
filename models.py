@@ -36,7 +36,7 @@ class Wiki(models.Model) : #Architecture pour le Wiki
 	class Meta :
 		verbose_name = 'Gestion du Wiki'
 		verbose_name_plural = 'Gestion du Wiki'
-		ordering = ['-w_publdate']
+		ordering = ['w_titre']
 
 	def save(self, *args, **kwargs) :
 		self.w_titre_slugify = slugify(self.w_titre)
