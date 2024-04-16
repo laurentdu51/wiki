@@ -15,3 +15,16 @@ migrations/__pycache__/0006_auto_20240124_0910.cpython-312.pyc
 migrations/__pycache__/0007_remove_wiki_w_data.cpython-312.pyc
 migrations/__pycache__/0005_alter_wiki_w_publdate.cpython-312.pyc
 migrations/__pycache__/0006_auto_20240313_1057.cpython-312.pyc
+__pycache__/__init__.cpython-39.pyc
+__pycache__/admin.cpython-39.pyc
+__pycache__/apps.cpython-39.pyc
+__pycache__/models.cpython-39.pyc
+__pycache__/urls.cpython-39.pyc
+__pycache__/views.cpython-39.pyc
+migrations/__pycache__/__init__.cpython-39.pyc
+migrations/__pycache__/0001_initial.cpython-39.pyc
+migrations/__pycache__/0002_auto_20240123_1357.cpython-39.pyc
+migrations/__pycache__/0003_auto_20240123_1638.cpython-39.pyc
+migrations/__pycache__/0004_alter_wiki_w_contenu.cpython-39.pyc
+migrations/__pycache__/0005_alter_wiki_w_publdate.cpython-39.pyc
+migrations/__pycache__/0006_auto_20240313_1057.cpython-39.pyc
