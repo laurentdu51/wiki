@@ -69,6 +69,14 @@
 	<p>
 	{% endif %}
 	<p class="card-text">{{page.p_right|safe}}</p>
+	{% if page.groupe %}
+		<h4> <i class="fas fa-tags"></i> Les Groupes </h4>
+		<p class="card-text">
+		{% for grp in page.groupe %}
+			<a href="{{request.path}}?grp={{grp.g_nom_slugify}}" class="btn btn-dark mb-2" tabindex="-1" role="button" aria-disabled="true">{{grp.g_nom}}</a>
+		{% endfor %}
+		<a href="{{request.path}}" class="btn btn-dark mb-2" tabindex="-1" role="button" aria-disabled="true">Aucun</a>
+	{% endif %}
 	<h4> <i class="fas fa-tags"></i> Les Catégories </h4>
 	<p class="card-text">
 	{% for cat in page.wiki_cat %}

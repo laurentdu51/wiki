@@ -5,6 +5,8 @@ from django.template.defaultfilters import slugify
 
 from trumbowyg.widgets import TrumbowygWidget
 
+from core.models import Groupe
+
 class Cat_Wiki(models.Model) :
 	cw_titre = models.CharField("Titre", max_length = 128, unique = True)
 	cw_titre_slgify = models.CharField("Titre Slugify", max_length = 128, blank = True, editable = False)
@@ -25,6 +27,7 @@ class Cat_Wiki(models.Model) :
 class Wiki(models.Model) : #Architecture pour le Wiki
 	w_titre = models.CharField("Titre", max_length = 128, unique = True)
 	w_titre_slugify = models.CharField("Titre Slugify", max_length = 128, blank = True, editable = False)
+	w_grp = models.ForeignKey(Groupe,verbose_name="Regroupement", blank = True, null = True, on_delete=models.PROTECT)
 	w_cat = models.ManyToManyField(Cat_Wiki, verbose_name="Catégories" , blank = True)
 	w_description = models.TextField("Résumé", blank = True)
 	w_contenu = models.TextField("Contenu", blank = True)

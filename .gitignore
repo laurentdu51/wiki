@@ -28,3 +28,4 @@ migrations/__pycache__/0003_auto_20240123_1638.cpython-39.pyc
 migrations/__pycache__/0004_alter_wiki_w_contenu.cpython-39.pyc
 migrations/__pycache__/0005_alter_wiki_w_publdate.cpython-39.pyc
 migrations/__pycache__/0006_auto_20240313_1057.cpython-39.pyc
+migrations/__pycache__/0007_wiki_w_grp.cpython-312.pyc

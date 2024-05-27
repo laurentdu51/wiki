@@ -15,7 +15,8 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 
 #from wiki.forms import *
-from core.views import gen_page_base, gen_page_sys
+
+from core.views import gen_page_base, gen_page_sys, get_groupe
 from wiki.models import *
 
 def wiki_index(request, cat):
@@ -31,6 +32,8 @@ def wiki_index(request, cat):
 	page.p_description = strip_tags(page.p_right)
 	page.p_mots_clefs = ""
 	
+	page.groupe = get_groupe()
+	page.p_get_groupe = request.GET.get('grp')
 
 	w_search = request.GET.get('w_search')
 
@@ -41,19 +44,34 @@ def wiki_index(request, cat):
 		page.wiki_search = Wiki_search_Form()
 	if cat == "index":
 		if w_search != None:
-			wiki_art = Wiki.objects.filter( w_publier = True ).filter(q).order_by( 'w_titre' )
+			if page.p_get_groupe != None:
+				wiki_art = Wiki.objects.filter( w_publier = True ).filter(w_grp__g_nom_slugify = page.p_get_groupe).filter(q).order_by( 'w_titre' )
+			else :
+				wiki_art = Wiki.objects.filter( w_publier = True ).filter(q).order_by( 'w_titre' )
 		else :
-			wiki_art = Wiki.objects.filter( w_publier = True ).order_by( 'w_titre' )
+			if page.p_get_groupe != None:
+				wiki_art = Wiki.objects.filter( w_publier = True ).filter(w_grp__g_nom_slugify = page.p_get_groupe).order_by( 'w_titre' )
+			else :
+				wiki_art = Wiki.objects.filter( w_publier = True ).order_by( 'w_titre' )
 		page.wiki_cat = Cat_Wiki.objects.all()[:15]
 
 	elif cat == "all":
-		wiki_art = Wiki.objects.filter( w_publier = True ).order_by( 'w_titre' )
+		if page.p_get_groupe != None:
+			wiki_art = Wiki.objects.filter( w_publier = True ).filter(w_grp__g_nom_slugify = page.p_get_groupe).order_by( 'w_titre' )
+		else :
+			wiki_art = Wiki.objects.filter( w_publier = True ).order_by( 'w_titre' )
 		page.wiki_cat = Cat_Wiki.objects.all()[:15]
 	else :
 		if w_search != None:
-			wiki_art = Wiki.objects.filter( w_publier = True ).filter( w_cat__cw_titre_slgify = cat ).filter(q).order_by( 'w_titre' )
+			if page.p_get_groupe != None:
+				wiki_art = Wiki.objects.filter( w_publier = True ).filter(w_grp__g_nom_slugify = page.p_get_groupe).filter( w_cat__cw_titre_slgify = cat ).filter(q).order_by( 'w_titre' )
+			else :
+				wiki_art = Wiki.objects.filter( w_publier = True ).filter( w_cat__cw_titre_slgify = cat ).filter(q).order_by( 'w_titre' )
 		else :
-			wiki_art = Wiki.objects.filter( w_publier = True ).filter( w_cat__cw_titre_slgify = cat ).order_by( 'w_titre' )
+			if page.p_get_groupe != None:
+				wiki_art = Wiki.objects.filter( w_publier = True ).filter(w_grp__g_nom_slugify = page.p_get_groupe).filter( w_cat__cw_titre_slgify = cat ).order_by( 'w_titre' )
+			else :
+				wiki_art = Wiki.objects.filter( w_publier = True ).filter( w_cat__cw_titre_slgify = cat ).order_by( 'w_titre' )
 		page.wiki_cat = Cat_Wiki.objects.filter( cw_titre_slgify = cat )[:15]
 		page.retour = "wiki_index"
 
