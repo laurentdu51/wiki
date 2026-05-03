@@ -2,6 +2,7 @@ from import_export.admin import ImportExportModelAdmin
 
 from django.contrib import admin
 from wiki.models import *
+from wiki.forms import Wiki_Admin_Form
 
 def bt_w_publier(modeladmin, request, queryset):
 	queryset.update(w_publier=True)

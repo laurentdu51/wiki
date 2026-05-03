@@ -3,8 +3,6 @@ from django import forms
 
 from django.template.defaultfilters import slugify
 
-from trumbowyg.widgets import TrumbowygWidget
-
 from core.models import Groupe
 
 class Cat_Wiki(models.Model) :
@@ -52,12 +50,3 @@ class Wiki(models.Model) : #Architecture pour le Wiki
 
 class Wiki_search_Form(forms.Form):
 	w_search = forms.CharField(label='Vous recherchez un page ?', max_length=100)
-
-class Wiki_Admin_Form(forms.ModelForm):
-	class Meta:
-		model = Wiki
-		exclude = ['w_titre_slugify','w_reading']
-		widgets = {
-			'w_contenu': TrumbowygWidget(attrs={'rows':4, 'cols':15}),
-			'w_right': TrumbowygWidget(attrs={'rows':4, 'cols':15}),
-			}
